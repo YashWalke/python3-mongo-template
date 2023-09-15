@@ -1,0 +1,8 @@
+{
+    "host": "mongodb://localhost:27017",
+    "port": null,
+    "username": null,
+    "password": null,
+    "database": "test",
+    "collections": {}
+}

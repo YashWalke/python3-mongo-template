@@ -1,0 +1,8 @@
+.venv/
+data/
+logs/
+src/__pycache__/
+docker-compose.yml
+Dockerfile
+LICENSE
+README.md

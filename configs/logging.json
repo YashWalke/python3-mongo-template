@@ -1,0 +1,42 @@
+{
+    "version": 1,
+    "disable_existing_loggers": false,
+    "formatters": {
+        "log": {
+            "format": "%(asctime)s\t%(name)s\t%(levelname)s\t%(message)s\t"
+        }
+    },
+    "handlers": {
+        "file_handler": {
+            "class": "logging.handlers.TimedRotatingFileHandler",
+            "filename": "./logs/migrate_script_log.log",
+            "when": "midnight",
+            "interval": 1,
+            "backupCount": 7,
+            "formatter": "log"
+        },
+        "console": {
+            "class": "logging.StreamHandler",
+            "level": "DEBUG",
+            "formatter": "log"
+        }
+    },
+    "loggers": {
+        "main": {
+            "handlers": [
+                "file_handler",
+                "console"
+            ],
+            "level": "DEBUG",
+            "propagate": false
+        },
+        "db": {
+            "handlers": [
+                "file_handler",
+                "console"
+            ],
+            "level": "DEBUG",
+            "propagate": false
+        }
+    }
+}

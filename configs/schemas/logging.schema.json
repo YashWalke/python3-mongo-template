@@ -1,0 +1,165 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "type": "object",
+    "properties": {
+        "version": {
+            "type": "integer",
+            "minimum": 1
+        },
+        "disable_existing_loggers": {
+            "type": "boolean"
+        },
+        "formatters": {
+            "type": "object",
+            "properties": {
+                "log": {
+                    "type": "object",
+                    "properties": {
+                        "format": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "format"
+                    ]
+                }
+            },
+            "required": [
+                "log"
+            ]
+        },
+        "handlers": {
+            "type": "object",
+            "properties": {
+                "file_handler": {
+                    "type": "object",
+                    "properties": {
+                        "class": {
+                            "type": "string"
+                        },
+                        "filename": {
+                            "type": "string"
+                        },
+                        "when": {
+                            "type": "string",
+                            "enum": [
+                                "midnight"
+                            ]
+                        },
+                        "interval": {
+                            "type": "integer",
+                            "minimum": 1
+                        },
+                        "backupCount": {
+                            "type": "integer",
+                            "minimum": 1
+                        },
+                        "formatter": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "class",
+                        "filename",
+                        "when",
+                        "interval",
+                        "backupCount",
+                        "formatter"
+                    ]
+                },
+                "console": {
+                    "type": "object",
+                    "properties": {
+                        "class": {
+                            "type": "string"
+                        },
+                        "level": {
+                            "type": "string",
+                            "enum": [
+                                "DEBUG"
+                            ]
+                        },
+                        "formatter": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "class",
+                        "level",
+                        "formatter"
+                    ]
+                }
+            },
+            "required": [
+                "file_handler",
+                "console"
+            ]
+        },
+        "loggers": {
+            "type": "object",
+            "properties": {
+                "main": {
+                    "type": "object",
+                    "properties": {
+                        "handlers": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "level": {
+                            "type": "string",
+                            "enum": [
+                                "DEBUG"
+                            ]
+                        },
+                        "propagate": {
+                            "type": "boolean"
+                        }
+                    },
+                    "required": [
+                        "handlers",
+                        "level",
+                        "propagate"
+                    ]
+                },
+                "db": {
+                    "type": "object",
+                    "properties": {
+                        "handlers": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "level": {
+                            "type": "string",
+                            "enum": [
+                                "DEBUG"
+                            ]
+                        },
+                        "propagate": {
+                            "type": "boolean"
+                        }
+                    },
+                    "required": [
+                        "handlers",
+                        "level",
+                        "propagate"
+                    ]
+                }
+            },
+            "required": [
+                "main",
+                "db"
+            ]
+        }
+    },
+    "required": [
+        "version",
+        "disable_existing_loggers",
+        "formatters",
+        "handlers",
+        "loggers"
+    ]
+}

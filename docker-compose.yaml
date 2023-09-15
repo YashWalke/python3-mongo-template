@@ -1,0 +1,19 @@
+version: '2'
+services:
+  db:
+    image: mongodb/mongodb-community-server:6.0.6-ubi8
+    ports:
+      - 27017:27017
+    volumes:
+      - ./data:/data/db
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 5000:5000
+    volumes:
+      - ./logs:/logs
+    depends_on:
+      - db
